@@ -1,0 +1,339 @@
+******************************************************************************
+                  TI ARM Linker PC v5.1.1                      
+******************************************************************************
+>> Linked Tue Jun 24 18:31:27 2014
+
+OUTPUT FILE NAME:   <rtos_led.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 00000e91
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00001348  0003ecb8  R  X
+  SRAM                  20000000   00008000  00007948  000006b8  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00001350   00001350    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00001052   00001052    r-x .text
+  000012c0    000012c0    00000042   00000042    r-- .const
+  00001308    00001308    00000048   00000048    r-- .cinit
+20000000    20000000    00007948   00000000    rw-
+  20000000    20000000    000076ec   00000000    rw- .bss
+  200076ec    200076ec    00000200   00000000    rw- .stack
+  200078ec    200078ec    0000005c   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     startup_ccs.obj (.intvecs)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.text      0    0000026c    00001052     
+                  0000026c    000001ea     uartstdio.obj (.text:UARTvprintf)
+                  00000456    00000002     startup_ccs.obj (.text:FaultISR)
+                  00000458    000000f0     tasks.obj (.text:xTaskGenericCreate)
+                  00000548    000000e0     tasks.obj (.text:vTaskIncrementTick)
+                  00000628    000000d0     tasks.obj (.text:xTaskResumeAll)
+                  000006f8    000000bc     heap_2.obj (.text:pvPortMalloc)
+                  000007b4    000000a6     portasm.obj (.text)
+                  0000085a    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  000008f6    00000002     startup_ccs.obj (.text:IntDefaultHandler)
+                  000008f8    00000098     tasks.obj (.text:vTaskSwitchContext)
+                  00000990    00000094     rtsv7M4_T_le_v4SPD16_eabi.lib : auto_init.obj (.text)
+                  00000a24    00000080     rtos_led.obj (.text:main)
+                  00000aa4    00000078     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
+                  00000b1c    00000064     rtos_led.obj (.text:ConfigureUART)
+                  00000b80    00000060     uartstdio.obj (.text:UARTStdioConfig)
+                  00000be0    00000060     tasks.obj (.text:prvInitialiseTaskLists)
+                  00000c40    0000005e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text)
+                  00000c9e    00000002     startup_ccs.obj (.text:NmiSR)
+                  00000ca0    00000058     task_led1.obj (.text:LED1TaskInit)
+                  00000cf8    00000058     task_led2.obj (.text:LED2TaskInit)
+                  00000d50    00000054     task_led1.obj (.text:LED1Task)
+                  00000da4    00000054     task_led2.obj (.text:LED2Task)
+                  00000df8    00000050     tasks.obj (.text:prvCheckTasksWaitingTermination)
+                  00000e48    00000048     uartstdio.obj (.text:UARTwrite)
+                  00000e90    00000048     rtsv7M4_T_le_v4SPD16_eabi.lib : boot.obj (.text)
+                  00000ed8    00000048     tasks.obj (.text:vTaskStartScheduler)
+                  00000f20    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
+                  00000f64    00000044                                   : exit.obj (.text)
+                  00000fa8    00000044     heap_2.obj (.text:vPortFree)
+                  00000fec    00000042     rtsv7M4_T_le_v4SPD16_eabi.lib : u_divt2.obj (.text)
+                  0000102e    00000002     rtos_led.obj (.text:vApplicationStackOverflowHook)
+                  00001030    00000040     port.obj (.text:xPortStartScheduler)
+                  00001070    0000003a     tasks.obj (.text:prvInitialiseTCBVariables)
+                  000010aa    00000036     tasks.obj (.text:prvAllocateTCBAndStack)
+                  000010e0    00000030     rtsv7M4_T_le_v4SPD16_eabi.lib : strncpy.obj (.text)
+                  00001110    00000022     port.obj (.text:pxPortInitialiseStack)
+                  00001132    00000022     rtsv7M4_T_le_v4SPD16_eabi.lib : memcmp.obj (.text)
+                  00001154    00000022     list.obj (.text:vListRemove)
+                  00001176    0000001c     list.obj (.text:vListInsertEnd)
+                  00001192    00000002     --HOLE-- [fill = 0]
+                  00001194    0000001c     port.obj (.text:xPortSysTickHandler)
+                  000011b0    0000001a     uartstdio.obj (.text:UARTprintf)
+                  000011ca    00000002     --HOLE-- [fill = 0]
+                  000011cc    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  000011e4    00000016     list.obj (.text:vListInitialise)
+                  000011fa    00000002     --HOLE-- [fill = 0]
+                  000011fc    00000014     port.obj (.text:prvSetupTimerInterrupt)
+                  00001210    00000014     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.text)
+                  00001224    00000014     port.obj (.text:vPortEnterCritical)
+                  00001238    00000014     port.obj (.text:vPortExitCritical)
+                  0000124c    00000012     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
+                  0000125e    00000012     tasks.obj (.text:prvDeleteTCB)
+                  00001270    00000010     port.obj (.text:vPortYieldFromISR)
+                  00001280    00000010     tasks.obj (.text:vTaskSuspendAll)
+                  00001290    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
+                  0000129e    00000008     tasks.obj (.text:prvIdleTask)
+                  000012a6    00000006     startup_ccs.obj (.text:ResetISR)
+                  000012ac    00000006     driverlib.lib : uart.obj (.text:UARTClockSourceSet)
+                  000012b2    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  000012b8    00000006     list.obj (.text:vListInitialiseItem)
+
+.const     0    000012c0    00000042     
+                  000012c0    0000001c     uartstdio.obj (.const)
+                  000012dc    00000014     tasks.obj (.const:.string)
+                  000012f0    00000012     uartstdio.obj (.const:.string)
+
+.cinit     0    00001308    00000048     
+                  00001308    00000020     (.cinit..data.load) [load image, compression = rle]
+                  00001328    0000000c     (__TI_handler_table)
+                  00001334    00000004     --HOLE-- [fill = 0]
+                  00001338    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00001340    00000010     (__TI_cinit_table)
+
+.bss       0    20000000    000076ec     UNINITIALIZED
+                  20000000    00007530     heap_2.obj (.bss:xHeap)
+                  20007530    00000140     tasks.obj (.bss:pxReadyTasksLists)
+                  20007670    00000014     (.common:xDelayedTaskList1)
+                  20007684    00000014     (.common:xDelayedTaskList2)
+                  20007698    00000014     (.common:xPendingReadyList)
+                  200076ac    00000014     (.common:xSuspendedTaskList)
+                  200076c0    00000014     (.common:xTasksWaitingTermination)
+                  200076d4    00000008     (.common:xEnd)
+                  200076dc    00000008     (.common:xStart)
+                  200076e4    00000004     (.common:pxDelayedTaskList)
+                  200076e8    00000004     (.common:pxOverflowDelayedTaskList)
+
+.stack     0    200076ec    00000200     UNINITIALIZED
+                  200076ec    00000200     --HOLE--
+
+.data      0    200078ec    0000005c     UNINITIALIZED
+                  200078ec    00000034     tasks.obj (.data)
+                  20007920    00000008     heap_2.obj (.data)
+                  20007928    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
+                  20007930    00000008                                   : exit.obj (.data)
+                  20007938    00000005     uartstdio.obj (.data)
+                  2000793d    00000003     --HOLE--
+                  20007940    00000004     port.obj (.data)
+                  20007944    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00001340 records: 2, size/record: 8, table size: 16
+	.data: load addr=00001308, load size=00000020 bytes, run addr=200078ec, run size=0000005c bytes, compression=rle
+	.bss: load addr=00001338, load size=00000008 bytes, run addr=20000000, run size=000076ec bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00001328 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_rle24
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+00000f65   C$$EXIT
+00000b1d   ConfigureUART
+00000ca1   LED1TaskInit
+00000cf9   LED2TaskInit
+000012a7   ResetISR
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+000012ad   UARTClockSourceSet
+00000b81   UARTStdioConfig
+000011b1   UARTprintf
+0000026d   UARTvprintf
+00000e49   UARTwrite
+200078ec   __STACK_END
+00000200   __STACK_SIZE
+200078ec   __STACK_TOP
+00001340   __TI_CINIT_Base
+00001350   __TI_CINIT_Limit
+00001328   __TI_Handler_Table_Base
+00001334   __TI_Handler_Table_Limit
+00000001   __TI_args_main
+00000991   __TI_auto_init
+20007930   __TI_cleanup_ptr
+00001291   __TI_decompress_none
+000012b3   __TI_decompress_rle24
+20007934   __TI_dtors_ptr
+00000000   __TI_static_base__
+0000124d   __TI_zero_init
+00000aa5   __aeabi_memclr
+00000aa5   __aeabi_memclr4
+00000aa5   __aeabi_memclr8
+0000085b   __aeabi_memcpy
+0000085b   __aeabi_memcpy4
+0000085b   __aeabi_memcpy8
+00000aa7   __aeabi_memset
+00000aa7   __aeabi_memset4
+00000aa7   __aeabi_memset8
+00000fed   __aeabi_uidivmod
+ffffffff   __binit__
+ffffffff   __c_args__
+200076ec   __stack
+000011cd   _args_main
+00000e91   _c_int00
+20007928   _lock
+0000121f   _nop
+00001217   _register_lock
+00001211   _register_unlock
+2000792c   _unlock
+00000f69   abort
+ffffffff   binit
+00000f21   copy_in
+00000f71   exit
+00000000   g_pfnVectors
+00000a25   main
+20007944   main_func_sp
+00001133   memcmp
+0000085b   memcpy
+00000aad   memset
+000006f9   pvPortMalloc
+200078ec   pxCurrentTCB
+00001111   pxPortInitialiseStack
+000010e1   strncpy
+0000102f   vApplicationStackOverflowHook
+000011e5   vListInitialise
+000012b9   vListInitialiseItem
+00001177   vListInsertEnd
+00001155   vListRemove
+00000811   vPortClearInterruptMask
+00000849   vPortEnableVFP
+00001225   vPortEnterCritical
+00001239   vPortExitCritical
+00000fa9   vPortFree
+0000081b   vPortSVCHandler
+00000807   vPortSetInterruptMask
+00000835   vPortStartFirstTask
+00001271   vPortYieldFromISR
+00000549   vTaskIncrementTick
+00000ed9   vTaskStartScheduler
+00001281   vTaskSuspendAll
+000008f9   vTaskSwitchContext
+000007b9   xPortPendSVHandler
+00001031   xPortStartScheduler
+00001195   xPortSysTickHandler
+00000459   xTaskGenericCreate
+00000629   xTaskResumeAll
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000000   __TI_static_base__
+00000000   g_pfnVectors
+00000001   __TI_args_main
+00000200   __STACK_SIZE
+0000026d   UARTvprintf
+00000459   xTaskGenericCreate
+00000549   vTaskIncrementTick
+00000629   xTaskResumeAll
+000006f9   pvPortMalloc
+000007b9   xPortPendSVHandler
+00000807   vPortSetInterruptMask
+00000811   vPortClearInterruptMask
+0000081b   vPortSVCHandler
+00000835   vPortStartFirstTask
+00000849   vPortEnableVFP
+0000085b   __aeabi_memcpy
+0000085b   __aeabi_memcpy4
+0000085b   __aeabi_memcpy8
+0000085b   memcpy
+000008f9   vTaskSwitchContext
+00000991   __TI_auto_init
+00000a25   main
+00000aa5   __aeabi_memclr
+00000aa5   __aeabi_memclr4
+00000aa5   __aeabi_memclr8
+00000aa7   __aeabi_memset
+00000aa7   __aeabi_memset4
+00000aa7   __aeabi_memset8
+00000aad   memset
+00000b1d   ConfigureUART
+00000b81   UARTStdioConfig
+00000ca1   LED1TaskInit
+00000cf9   LED2TaskInit
+00000e49   UARTwrite
+00000e91   _c_int00
+00000ed9   vTaskStartScheduler
+00000f21   copy_in
+00000f65   C$$EXIT
+00000f69   abort
+00000f71   exit
+00000fa9   vPortFree
+00000fed   __aeabi_uidivmod
+0000102f   vApplicationStackOverflowHook
+00001031   xPortStartScheduler
+000010e1   strncpy
+00001111   pxPortInitialiseStack
+00001133   memcmp
+00001155   vListRemove
+00001177   vListInsertEnd
+00001195   xPortSysTickHandler
+000011b1   UARTprintf
+000011cd   _args_main
+000011e5   vListInitialise
+00001211   _register_unlock
+00001217   _register_lock
+0000121f   _nop
+00001225   vPortEnterCritical
+00001239   vPortExitCritical
+0000124d   __TI_zero_init
+00001271   vPortYieldFromISR
+00001281   vTaskSuspendAll
+00001291   __TI_decompress_none
+000012a7   ResetISR
+000012ad   UARTClockSourceSet
+000012b3   __TI_decompress_rle24
+000012b9   vListInitialiseItem
+00001328   __TI_Handler_Table_Base
+00001334   __TI_Handler_Table_Limit
+00001340   __TI_CINIT_Base
+00001350   __TI_CINIT_Limit
+200076ec   __stack
+200078ec   __STACK_END
+200078ec   __STACK_TOP
+200078ec   pxCurrentTCB
+20007928   _lock
+2000792c   _unlock
+20007930   __TI_cleanup_ptr
+20007934   __TI_dtors_ptr
+20007944   main_func_sp
+ffffffff   __binit__
+ffffffff   __c_args__
+ffffffff   binit
+UNDEFED    SHT$$INIT_ARRAY$$Base
+UNDEFED    SHT$$INIT_ARRAY$$Limit
+
+[84 symbols]
